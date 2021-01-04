@@ -50,6 +50,8 @@ ARG UG4_CONF_CPU="1"
 ARG UG4_CC="clang-10"
 ARG UG4_CXX="clang++-10"
 
+RUN echo "Arguments for apt: ${APT_MODULES_UGBUILD}"
+RUN echo "Arguments for apt: ${UG4_CXX}" 
 RUN apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install -y ${APT_MODULES_UGBUILD}
 
 #Build process
