@@ -1,4 +1,9 @@
 ARG BASE_CONTAINER=ubuntu:bionic
+ARG DEBIAN_FRONTEND=noninteractive
+
+ENV APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ENV UG4_CC="clang-10"
+ENV UG4_CXX="clang++-10"
 
 ################################################
 # STAGE 1: Setup for ughub in /opt/ughub
@@ -15,7 +20,7 @@ RUN echo "Arguments for apt: ${UG4_WITH_XEUS}"
 #install requirements
 RUN apt list --installed
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install ${APT_MODULES_UGHUB}
+RUN apt-get update && apt-get -y install ${APT_MODULES_UGHUB}
 WORKDIR /opt
 RUN git clone https://github.com/UG4/ughub.git ughub;  
 ENV PATH=$PATH:/opt/ughub
@@ -44,15 +49,13 @@ RUN ughub init;\
 FROM uginstall AS ugbuild
 
 # Install dependencies
-ENV APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
-ENV UG4_CC="clang-10"
-ENV UG4_CXX="clang++-10"
+
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
 
 RUN echo "Arguments for apt: ${APT_MODULES_UGBUILD}"
 RUN echo "Arguments for apt: ${UG4_CXX}" 
-RUN apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install -y ${APT_MODULES_UGBUILD}
+RUN apt-get update; apt-get install -y ${APT_MODULES_UGBUILD}
 
 #Build process
 WORKDIR ${UG4_ROOT}/build
