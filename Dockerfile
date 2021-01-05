@@ -44,11 +44,11 @@ RUN ughub init;\
 FROM uginstall AS ugbuild
 
 # Install dependencies
-ARG APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ENV APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ENV UG4_CC="clang-10"
+ENV UG4_CXX="clang++-10"
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
-ARG UG4_CC="clang-10"
-ARG UG4_CXX="clang++-10"
 
 RUN echo "Arguments for apt: ${APT_MODULES_UGBUILD}"
 RUN echo "Arguments for apt: ${UG4_CXX}" 
