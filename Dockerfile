@@ -4,9 +4,9 @@ FROM ${BASE_CONTAINER} AS ugbase
 ################################################
 # STAGE 0: Config
 ARG DEBIAN_FRONTEND=noninteractive
-ENV APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
-ENV UG4_CC="clang-10"
-ENV UG4_CXX="clang++-10"
+ARG APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ARG UG4_CC="clang-10"
+ARG UG4_CXX="clang++-10"
 
 ################################################
 # STAGE 1: Setup for ughub in /opt/ughub
