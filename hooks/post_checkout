@@ -2,4 +2,6 @@
 # Replace environment variables in Dockerfile
 echo "post_checkout"
 printenv
-envsubst < "Dockerfile.in" > "Dockerfile"
+envsubst '${UG4DOCKER_CONFIG_APTMODULES_UGBUILD}
+${UG4DOCKER_CONFIG_CC}
+${UG4DOCKER_CONFIG_CXX}'< "Dockerfile.in" > "Dockerfile"
