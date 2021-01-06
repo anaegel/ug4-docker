@@ -1,1 +1,5 @@
+#!/bin/sh
 # Replace environment variables in Dockerfile
+echo "post_checkout"
+printenv
+envsubst < Dockerfile > Dockerfile
