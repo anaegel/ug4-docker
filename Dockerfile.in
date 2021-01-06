@@ -49,18 +49,24 @@ RUN ughub init;\
 ################################################
 FROM uginstall AS ugbuild
 
-# Install dependencies
+# Configure using ARG, e.g.
 # ARG UG4DOCKER_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
-ARG UG4DOCKER_APTMODULES_UGBUILD=${UG4DOCKER_APTMODULES_UGBUILD}                                                                                    
+# ARG UG4DOCKER_CC=gcc
+# ARG UG4DOCKER_CXX=g++
 
-# ARG UG4DOCKER_CC=${CC}                                                                  
-# ARG UG4DOCKER_CXX=${CXX}  
+ARG UG4DOCKER_APTMODULES_UGBUILD=${UG4DOCKER_CONFIG_APTMODULES_UGBUILD}
+ARG UG4DOCKER_CC=${UG4DOCKER_CONFIG_CC}
+ARG UG4DOCKER_CXX=${UG4DOCKER_CONFIG_CXX}
+
+RUN echo "Arguments: UG4DOCKER_APTMODULES_UGBUILD = ${UG4DOCKER_APTMODULES_UGBUILD}"
+RUN echo "Arguments: UG4DOCKER_CXX$ = ${UG4DOCKER_CXX}"
 
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
 
-RUN echo "Arguments for apt: ${UG4DOCKER_APTMODULES_UGBUILD}"
-RUN echo "Arguments for apt: ${UG4_CXX}" 
+
+
+
 RUN apt-get update; apt-get install -y ${UG4DOCKER_APTMODULES_UGBUILD}
 
 #Build process
