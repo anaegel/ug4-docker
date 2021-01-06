@@ -2,4 +2,4 @@
 # Replace environment variables in Dockerfile
 echo "post_checkout"
 printenv
-envsubst < Dockerfile > Dockerfile
+envsubst < "Dockerfile.in" > "Dockerfile"

@@ -51,7 +51,7 @@ FROM uginstall AS ugbuild
 
 # Install dependencies
 # ARG UG4DOCKER_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
-ARG UG4DOCKER_APTMODULES_UGBUILD                                                                                    
+ARG UG4DOCKER_APTMODULES_UGBUILD=${UG4DOCKER_APTMODULES_UGBUILD}                                                                                    
 
 # ARG UG4DOCKER_CC=${CC}                                                                  
 # ARG UG4DOCKER_CXX=${CXX}  
