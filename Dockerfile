@@ -50,22 +50,22 @@ RUN ughub init;\
 FROM uginstall AS ugbuild
 
 # Install dependencies
-ARG APT_MODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+# ARG UG4DOCKER_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
                                                                                        
-ARG UG4_CC="clang-10"                                                                   
-ARG UG4_CXX="clang++-10" 
+# ARG UG4DOCKER_CC=${CC}                                                                  
+# ARG UG4DOCKER_CXX=${CXX}  
 
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
 
-RUN echo "Arguments for apt: ${APT_MODULES_UGBUILD}"
+RUN echo "Arguments for apt: ${UG4DOCKER_APTMODULES_UGBUILD}"
 RUN echo "Arguments for apt: ${UG4_CXX}" 
 RUN apt-get update; apt-get install -y ${APT_MODULES_UGBUILD}
 
 #Build process
 WORKDIR ${UG4_ROOT}/build
 # ENV CXX_FLAGS="-lstdc++"
-RUN cmake .. -DCMAKE_CXX_COMPILER=${UG4_CXX} -DCMAKE_C_COMPILER=${UG4_CC} -DDIM=${UG4_CONF_DIM} -DENABLE_ALL_PLUGINS=OFF -DCPU=${UG4_CONF_CPU} -DCOMPILE_INFO=OFF -DUSE_XEUS=${UG4_WITH_XEUS};\
+RUN cmake .. -DCMAKE_CXX_COMPILER=${UG4DOCKER_CXX} -DCMAKE_C_COMPILER=${UG4DOCKER_CC} -DDIM=${UG4_CONF_DIM} -DENABLE_ALL_PLUGINS=OFF -DCPU=${UG4_CONF_CPU} -DCOMPILE_INFO=OFF -DUSE_XEUS=${UG4_WITH_XEUS};\
     make -j10
     
 
