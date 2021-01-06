@@ -1,4 +1,0 @@
-#!/bin/sh
-echo "pre_build"
-printenv
-envsubst < Dockerfile
