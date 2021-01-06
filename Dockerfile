@@ -60,7 +60,7 @@ ARG UG4_CONF_CPU="1"
 
 RUN echo "Arguments for apt: ${UG4DOCKER_APTMODULES_UGBUILD}"
 RUN echo "Arguments for apt: ${UG4_CXX}" 
-RUN apt-get update; apt-get install -y ${APT_MODULES_UGBUILD}
+RUN apt-get update; apt-get install -y ${UG4DOCKER_APTMODULES_UGBUILD}
 
 #Build process
 WORKDIR ${UG4_ROOT}/build
