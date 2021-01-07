@@ -65,8 +65,6 @@ ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
 
 
-
-
 RUN apt-get update; apt-get install -y ${UG4DOCKER_APTMODULES_UGBUILD}
 
 #Build process
