@@ -54,18 +54,18 @@ FROM uginstall AS ugbuild
 # ARG UG4DOCKER_CC=gcc
 # ARG UG4DOCKER_CXX=g++
 
-ARG UG4DOCKER_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ARG UG4_CONF_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
 ARG UG4DOCKER_CC=clang-10
 ARG UG4DOCKER_CXX=clang++-10
 
-RUN echo "Arguments: UG4DOCKER_APTMODULES_UGBUILD = ${UG4DOCKER_APTMODULES_UGBUILD}"
+RUN echo "Arguments: UG4_CONF_APTMODULES_UGBUILD = ${UG4_CONF_APTMODULES_UGBUILD}"
 RUN echo "Arguments: UG4DOCKER_CXX$ = ${UG4DOCKER_CXX}"
 
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
 
 
-RUN apt-get update; apt-get install -y ${UG4DOCKER_APTMODULES_UGBUILD}
+RUN apt-get update; apt-get install -y ${UG4_CONF_APTMODULES_UGBUILD}
 
 #Build process
 WORKDIR ${UG4_ROOT}/build
