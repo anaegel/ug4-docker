@@ -68,6 +68,7 @@ ARG UG4_CONF_CPU="1"
 # RUN apt-get update; apt-get install -y ${UG4_CONF_APTMODULES_UGBUILD}
 RUN apt-get update;
 # RUN sed 's/#.*//' my-apt-file.txt | xargs apt-get install
+RUN echo ${UG4_CONF_APTMODULES_UGBUILD} 
 RUN echo ${UG4_CONF_APTMODULES_UGBUILD} | sed 's/:/ /g'  | xargs apt-get install -y
 
 #Build process
