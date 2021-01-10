@@ -54,7 +54,8 @@ FROM uginstall AS ugbuild
 # ARG UG4DOCKER_CC=gcc
 # ARG UG4DOCKER_CXX=g++
 
-ARG UG4_CONF_APTMODULES_UGBUILD="cmake make clang-10 llvm-10 libc-dev libblas-dev liblapack-dev"
+ARG UG4_CONF_APTMODULES_UGBUILD="cmake:make:clang-10:llvm-10:libc-dev:libblas-dev:liblapack-dev"
+ARG UG4_CONF_NUM_MAKE 10
 ARG UG4DOCKER_CC=clang-10
 ARG UG4DOCKER_CXX=clang++-10
 
@@ -75,7 +76,7 @@ RUN echo "${UG4_CONF_APTMODULES_UGBUILD}" | sed 's/:/ /g'  | xargs apt-get insta
 WORKDIR ${UG4_ROOT}/build
 # ENV CXX_FLAGS="-lstdc++"
 RUN cmake .. -DCMAKE_CXX_COMPILER=${UG4DOCKER_CXX} -DCMAKE_C_COMPILER=${UG4DOCKER_CC} -DDIM=${UG4_CONF_DIM} -DENABLE_ALL_PLUGINS=OFF -DCPU=${UG4_CONF_CPU} -DCOMPILE_INFO=OFF -DUSE_XEUS=${UG4_WITH_XEUS};\
-    make -j10
+    make -j${UG4_CONF_NUM_MAKE}
     
 
 ################################################
