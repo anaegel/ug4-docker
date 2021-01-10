@@ -55,7 +55,7 @@ FROM uginstall AS ugbuild
 # ARG UG4DOCKER_CXX=g++
 
 ARG UG4_CONF_APTMODULES_UGBUILD="cmake:make:clang-10:llvm-10:libc-dev:libblas-dev:liblapack-dev"
-ARG UG4_CONF_NUM_MAKE 10
+ARG UG4_CONF_NUM_MAKE=10
 ARG UG4DOCKER_CC=clang-10
 ARG UG4DOCKER_CXX=clang++-10
 
