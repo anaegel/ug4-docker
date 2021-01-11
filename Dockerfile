@@ -66,7 +66,7 @@ ARG UG4DOCKER_CXX=clang++-10
 RUN echo "Arguments: UG4_CONF_APTMODULES_UGBUILD = ${UG4_CONF_APTMODULES_UGBUILD}"
 RUN echo "Arguments: UG4DOCKER_CXX = ${UG4DOCKER_CXX}"
 RUN echo "Arguments: UG4_WITH_XEUS = ${UG4_WITH_XEUS}"
-
+RUN echo "Arguments: UG4_CMAKE_OPTIONS = ${UG4_CMAKE_OPTIONS}"
 
 
 # RUN apt-get update; apt-get install -y ${UG4_CONF_APTMODULES_UGBUILD}
@@ -79,7 +79,7 @@ RUN echo "${UG4_CONF_APTMODULES_UGBUILD}" | sed 's/:/ /g'  | xargs apt-get insta
 WORKDIR ${UG4_ROOT}/build
 # ENV CXX_FLAGS="-lstdc++"
 RUN cmake .. -DCMAKE_CXX_COMPILER=${UG4DOCKER_CXX} -DCMAKE_C_COMPILER=${UG4DOCKER_CC} -DDIM=${UG4_CONF_DIM} -DENABLE_ALL_PLUGINS=OFF -DCPU=${UG4_CONF_CPU} -DCOMPILE_INFO=OFF -DUSE_XEUS=${UG4_WITH_XEUS};\
-    make -j${UG4_CONF_NUM_MAKE}
+RUN cmake .. ${UG4_CMAKE_OPTIONS};  make -j${UG4_CONF_NUM_MAKE}
     
 
 ################################################
