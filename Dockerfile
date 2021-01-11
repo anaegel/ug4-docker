@@ -13,7 +13,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 FROM ugbase AS ughub
 
 ARG APT_MODULES_UGHUB="git python"
-ARG UG4_WITH_XEUS=OFF
 RUN echo "Arguments for apt: ${APT_MODULES_UGHUB}"
 RUN echo "Arguments for apt: ${UG4_WITH_XEUS}"
 # LABEL version="1.0"
