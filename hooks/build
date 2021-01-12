@@ -1,3 +1,2 @@
 #!/bin/bash
-docker build . -t ughub --target ughub
-docker build . -t $IMAGE_NAME --build-arg UG4_CONF_APTMODULES_UGBUILD="${UG4_CONF_APTMODULES_UGBUILD}" --build-arg UG4_CMAKE_OPTIONS="${UG4_CMAKE_OPTIONS}" --build-arg UG4DOCKER_CC="$UG4DOCKER_CC" --build-arg UG4DOCKER_CXX="$UG4DOCKER_CXX"
+docker build . -t $IMAGE_NAME ---target $TARGET -build-arg UG4_CONF_APTMODULES_UGBUILD="${UG4_CONF_APTMODULES_UGBUILD}" --build-arg UG4_CMAKE_OPTIONS="${UG4_CMAKE_OPTIONS}" --build-arg UG4DOCKER_CC="$UG4DOCKER_CC" --build-arg UG4DOCKER_CXX="$UG4DOCKER_CXX"
