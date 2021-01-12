@@ -55,6 +55,7 @@ FROM uginstall AS ugbuild
 
 ARG UG4_CONF_APTMODULES_UGBUILD="cmake:make:clang-10:llvm-10:libc-dev:libblas-dev:liblapack-dev"
 ARG UG4_CONF_NUM_MAKE=10
+ARG UG4_CMAKE_OPTIONS=""
 
 ARG UG4_CONF_DIM="2"
 ARG UG4_CONF_CPU="1"
